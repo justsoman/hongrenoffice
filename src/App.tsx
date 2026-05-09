@@ -32,6 +32,13 @@ import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
+/** `public/` files; must respect Vite `base` (e.g. GitHub Pages project site `/repo/`). */
+function publicAsset(path: string): string {
+  const base = import.meta.env.BASE_URL;
+  const normalized = path.replace(/^\/+/, "");
+  return `${base}${normalized}`;
+}
+
 const nav = [
   { href: "#profile", label: "公司简介" },
   { href: "#business", label: "业务介绍" },
@@ -62,12 +69,12 @@ const serviceCards = [
 ];
 
 const gallery = [
-  { src: "/images/warehouse-gallery-01.png", alt: "高位货架存储", cap: "存储规划 · 高位货架区", Icon: Boxes },
-  { src: "/images/warehouse-gallery-02.png", alt: "托盘与主通道", cap: "入库周转 · 托盘与通道", Icon: Truck },
-  { src: "/images/warehouse-gallery-03.png", alt: "库内作业动线", cap: "拣配动线 · 作业效率", Icon: ClipboardList },
-  { src: "/images/warehouse-gallery-04.png", alt: "仓储内部全景", cap: "仓网布局 · 规模化履约", Icon: Warehouse },
-  { src: "/images/warehouse-gallery-05.png", alt: "库存与理货", cap: "库存透明 · 理货盘点", Icon: Package },
-  { src: "/images/warehouse-gallery-06.png", alt: "出库与发货", cap: "出库发货 · 末端交付", Icon: Truck },
+  { src: publicAsset("images/warehouse-gallery-01.png"), alt: "高位货架存储", cap: "存储规划 · 高位货架区", Icon: Boxes },
+  { src: publicAsset("images/warehouse-gallery-02.png"), alt: "托盘与主通道", cap: "入库周转 · 托盘与通道", Icon: Truck },
+  { src: publicAsset("images/warehouse-gallery-03.png"), alt: "库内作业动线", cap: "拣配动线 · 作业效率", Icon: ClipboardList },
+  { src: publicAsset("images/warehouse-gallery-04.png"), alt: "仓储内部全景", cap: "仓网布局 · 规模化履约", Icon: Warehouse },
+  { src: publicAsset("images/warehouse-gallery-05.png"), alt: "库存与理货", cap: "库存透明 · 理货盘点", Icon: Package },
+  { src: publicAsset("images/warehouse-gallery-06.png"), alt: "出库与发货", cap: "出库发货 · 末端交付", Icon: Truck },
 ];
 
 const trustStrip = [
@@ -233,7 +240,7 @@ export default function App() {
           <div className="absolute inset-0 bg-slate-950" aria-hidden />
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url(/images/warehouse-services-banner.png)" }}
+            style={{ backgroundImage: `url(${publicAsset("images/warehouse-services-banner.png")})` }}
             aria-hidden
           />
           <div
@@ -387,7 +394,7 @@ export default function App() {
               <Card className="flex h-full min-h-[280px] flex-col overflow-hidden border-border/70 p-0 shadow-sm ring-1 ring-border/40 lg:min-h-0 lg:rounded-2xl">
                 <div className="relative min-h-[240px] flex-1 overflow-hidden bg-muted/40">
                   <img
-                    src="/images/about-warehouse.png"
+                    src={publicAsset("images/about-warehouse.png")}
                     alt="仓储作业现场"
                     className="absolute inset-0 h-full w-full object-cover"
                     width={800}
@@ -525,7 +532,7 @@ export default function App() {
               </ul>
               <Card className="overflow-hidden border-border/80 p-0 shadow-md">
                 <img
-                  src="/images/warehouse-advantages.png"
+                  src={publicAsset("images/warehouse-advantages.png")}
                   alt="仓储货架与库存"
                   className="min-h-[280px] w-full object-cover lg:min-h-[420px]"
                   sizes="(min-width: 1024px) 50vw, 100vw"
@@ -541,7 +548,7 @@ export default function App() {
           <div className="absolute inset-0 bg-slate-950" aria-hidden />
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url(/images/warehouse-services-banner.png)" }}
+            style={{ backgroundImage: `url(${publicAsset("images/warehouse-services-banner.png")})` }}
             aria-hidden
           />
           <div
