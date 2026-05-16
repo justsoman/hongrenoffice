@@ -29,6 +29,9 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install and build
+        env:
+          # Custom domain → site root: set repo Actions variable PAGES_BASE to /
+          PAGES_BASE: ${{ vars.PAGES_BASE }}
         run: |
           npm ci
           npm run build
