@@ -7,13 +7,24 @@ import { defineConfig } from "vite";
  * GitHub Pages:
  * - Project site: https://<user>.github.io/<repo>/
  * - User/org site: repo named "<user>.github.io" → served at site root
+ * - Custom domain on a project site is usually at `/` (not `/repo/`). Set repo
+ *   variable `GITHUB_PAGES_BASE` to `/` (or pass env in CI) so assets match.
  */
+function normalizeViteBase(raw: string): string {
+  const t = raw.trim();
+  if (t === "" || t === "/") return "/";
+  return t.endsWith("/") ? t : `${t}/`;
+}
+
 const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
 const isUserOrOrgSite = Boolean(repoName?.endsWith(".github.io"));
+const pagesBaseOverride = process.env.GITHUB_PAGES_BASE?.trim();
 const base =
-  process.env.GITHUB_ACTIONS === "true" && repoName && !isUserOrOrgSite
-    ? `/${repoName}/`
-    : "/";
+  pagesBaseOverride !== undefined && pagesBaseOverride !== ""
+    ? normalizeViteBase(pagesBaseOverride)
+    : process.env.GITHUB_ACTIONS === "true" && repoName && !isUserOrOrgSite
+      ? `/${repoName}/`
+      : "/";
 
 export default defineConfig({
   base,
