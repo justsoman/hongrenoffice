@@ -573,7 +573,7 @@ export default function App() {
                     <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border border-white/20 bg-white/10">
                       <MapPin className="size-4" strokeWidth={1.5} />
                     </span>
-                    <span>广东省 深圳市 南山区 粤海街道 海德三道 卓越后海中心 2707室</span>
+                    <span>广东省 深圳市 南山区 粤海街道迅雷大厦13层</span>
                   </p>
                   <p className="flex gap-3">
                     <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border border-white/20 bg-white/10">
