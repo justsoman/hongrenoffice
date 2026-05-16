@@ -595,16 +595,32 @@ export default function App() {
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   <Card className="border-white/15 bg-white/95 text-center shadow-lg">
                     <CardContent className="p-4">
-                      <div className="mx-auto flex aspect-square w-full max-w-[140px] min-h-[120px] items-center justify-center rounded-lg bg-muted text-xs text-muted-foreground">
-                        微信二维码
+                      <div className="mx-auto aspect-square w-full max-w-[140px] overflow-hidden rounded-lg border border-border bg-white">
+                        <img
+                          src={publicAsset("images/wxqr.jpg")}
+                          alt="企业微信二维码"
+                          width={280}
+                          height={280}
+                          className="size-full object-contain"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                       <p className="mt-3 text-xs font-semibold text-foreground">WeChat</p>
                     </CardContent>
                   </Card>
                   <Card className="border-white/15 bg-white/95 text-center shadow-lg">
                     <CardContent className="p-4">
-                      <div className="mx-auto flex aspect-square w-full max-w-[140px] min-h-[120px] items-center justify-center rounded-lg bg-muted text-xs text-muted-foreground">
-                        WhatsApp 二维码
+                      <div className="mx-auto aspect-square w-full max-w-[140px] overflow-hidden rounded-lg border border-border bg-white">
+                        <img
+                          src={publicAsset("images/whsqr.jpg")}
+                          alt="WhatsApp 二维码"
+                          width={280}
+                          height={280}
+                          className="size-full object-contain"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                       <p className="mt-3 text-xs font-semibold text-foreground">WhatsApp</p>
                     </CardContent>
