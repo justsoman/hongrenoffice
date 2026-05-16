@@ -30,8 +30,13 @@ jobs:
 
       - name: Install and build
         env:
+<<<<<<< HEAD
           # Custom domain → site root: set repo Actions variable PAGES_BASE to /
           PAGES_BASE: ${{ vars.PAGES_BASE }}
+=======
+          # Custom domain → site root: set repo Actions variable GITHUB_PAGES_BASE to /
+          GITHUB_PAGES_BASE: ${{ vars.GITHUB_PAGES_BASE }}
+>>>>>>> 948f0c34771956b1eb4795ab9618a44432d8c745
         run: |
           npm ci
           npm run build
