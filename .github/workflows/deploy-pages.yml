@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Same environment as deploy so `vars.PAGES_BASE` from Environment variables is available here.
+    environment:
+      name: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,10 +33,11 @@ jobs:
 
       - name: Install and build
         env:
-          # Custom domain → site root: set repo Actions variable PAGES_BASE to /
+          # Custom domain at site root: PAGES_BASE=/ (repo Variables or github-pages Environment variables)
           PAGES_BASE: ${{ vars.PAGES_BASE }}
         run: |
           npm ci
+          echo "PAGES_BASE for Vite base (expect / for www custom domain): '${PAGES_BASE}'"
           npm run build
 
       - name: Upload Pages artifact

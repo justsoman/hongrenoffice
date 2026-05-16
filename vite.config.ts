@@ -7,8 +7,9 @@ import { defineConfig } from "vite";
  * GitHub Pages:
  * - Project site: https://<user>.github.io/<repo>/
  * - User/org site: repo named "<user>.github.io" → served at site root
- * - Custom domain on a project site is usually at `/` (not `/repo/`). Set env
- *   `PAGES_BASE` to `/` in CI (e.g. repo Actions variable `PAGES_BASE`) so assets match.
+ * - Custom domain on a project site is usually at `/` (not `/repo/`). Set `PAGES_BASE=/`
+ *   for CI: repository Actions variable, or variable on the `github-pages` environment if
+ *   the workflow's build job uses `environment: github-pages` (see deploy-pages.yml).
  */
 function normalizeViteBase(raw: string): string {
   const t = raw.trim();
