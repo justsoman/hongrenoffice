@@ -613,7 +613,7 @@ export default function App() {
                     <CardContent className="p-4">
                       <div className="mx-auto aspect-square w-full max-w-[140px] overflow-hidden rounded-lg border border-border bg-white">
                         <img
-                          src={publicAsset("images/whsqr.jpg")}
+                          src={publicAsset("images/wxorp.jpg")}
                           alt="WhatsApp 二维码"
                           width={280}
                           height={280}
